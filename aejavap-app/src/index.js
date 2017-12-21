@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import ProductListClass from './containers/ProductListClass';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import CreateProduct from './containers/CreateProductClass'
 import {Router, Route, IndexRoute, hashHistory, IndexRedirect} from 'react-router'
 import axios from 'axios'
-import ProductDetails from './containers/ProductDetailsClass'
-import ProductAdminListClass from './containers/ProductAdminListClass/ProductAdminListClass'
+import InstitucijaListClass from './containers/InstitucijaListClass/InstitucijaListClass'
+import InstitucijaDetailsClass from './containers/InstitucijaDetailsClass/InstitucijaDetailsClass'
+import InstitucijaCreateClass from './containers/InstitucijaCreateClass/InstitucijaCreateClass'
 
 axios.defaults.baseURL = 'http://localhost:8888/api/';
 
@@ -32,16 +31,16 @@ const NoMatch = () => {
 ReactDOM.render((
     <Router history={hashHistory}>
         <Route path="/" component={InitialApp}>
-            <IndexRoute component={ProductListClass}/>
-            <IndexRedirect to='products'/>
-            <Route path="/products" component={ProductListClass}/>
-            <Route path="/products/:id" component={ProductDetails}/>
-            <Route path="/admin" component={ProductAdminListClass}/>
-            <Route path="/admin/createproduct" component={CreateProduct}/>
-            <Route path="/admin/createproduct/:id" component={CreateProduct}/>
-            <Route path="/help" component={ProductListClass}/>
+            <IndexRoute component={InstitucijaListClass}/>
+            <IndexRedirect to='institucijos'/>
+            <Route path="/institucijos" component={InstitucijaListClass}/>
+            <Route path="/institucijos/:id" component={InstitucijaDetailsClass}/>
+            {/*<Route path="/admin" component={InstitucijaAdminList}/>*/}
+            <Route path="/admin/institucijos" component={InstitucijaCreateClass}/>
+            <Route path="/admin/institucijos/:id" component={InstitucijaCreateClass}/>
+            <Route path="/help" component={InstitucijaListClass}/>
             <Route path="*" component={NoMatch}/>
-            <Route component={ProductListClass}/>
+            <Route component={InstitucijaListClass}/>
         </Route>
     </Router>
 ), document.getElementById('root'));
